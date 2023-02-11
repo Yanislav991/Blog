@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
-  const isUserLogged = localStorage.getItem("user") !== null;
+  const isUserLogged = localStorage.getItem("token") !== null;
   return (
     <nav className="navigation">
       <section className="logo-section">

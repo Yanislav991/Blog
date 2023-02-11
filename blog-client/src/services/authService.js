@@ -1,17 +1,19 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/user/";
+const API_URL = "http://localhost:3001/api/auth/";
+axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 class AuthService {
-  login(username, password) {
+  login(email, password) {
     return axios
       .post(API_URL + "login", {
-        username,
+        email,
         password,
       })
       .then((response) => {
         if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
+          localStorage.setItem("token", JSON.stringify(response.data));
         }
 
         return response.data;
@@ -19,19 +21,18 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
   }
 
-  register(username, email, password) {
-    return axios.post(API_URL + "signup", {
-      username,
+  register(email, password) {
+    return axios.post(API_URL + "signUp", {
       email,
       password,
     });
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));
+    return JSON.parse(localStorage.getItem("token"));
   }
 }
 
