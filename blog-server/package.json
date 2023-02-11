@@ -1,0 +1,25 @@
+{
+    "name": "BlogApp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "mocha --timeout 10000"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.1",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0",
+        "mongoose": "^6.9.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.7",
+        "chai-http": "^4.3.0",
+        "mocha": "^10.2.0"
+    }
+}

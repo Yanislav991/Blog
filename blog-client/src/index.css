@@ -1,0 +1,179 @@
+:root {
+    --blue: #3D5A80;
+    --ltb: #98C1D9;
+    --main: #E0FBFC;
+    --focus: #EE6C4D;
+    --dark: #293241
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+body {
+    background-color: var(--main);
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.navigation {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    gap: 8rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--blue);
+    box-shadow: 0px 1px 13px;
+}
+
+.logo-section {
+    width: 15%;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.logo-section:hover {
+    transform: scale(1.1);
+    -webkit-transition: transform 0.1s ease-in-out;
+    -moz-transition: transform 0.1s ease-in-out;
+    -ms-transition: transform 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+.logo {
+    color: var(--ltb);
+}
+
+.logo>span {
+    color: var(--focus);
+}
+
+.links-section {
+    display: flex;
+    gap: 2rem;
+}
+
+.links-section a>span {
+    color: var(--ltb);
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.links-section a>span:hover {
+    display: inline-block;
+    color: var(--focus);
+    transform: scale(1.1);
+    -webkit-transition: transform 0.1s ease-in-out;
+    -moz-transition: transform 0.1s ease-in-out;
+    -ms-transition: transform 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+.home-page {
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.home-info,
+.home-form {
+    width: 50%;
+    text-align: center;
+    padding: 1rem;
+    color: var(--ltb);
+    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--blue);
+    border-radius: 16px;
+}
+
+.info-header,
+.sign-up-form-header {
+    text-align: center;
+    color: var(--ltb);
+    width: 100%;
+    margin-bottom: 1rem;
+
+}
+
+.image-wrapper {
+    width: 100%;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.info-p {
+    color: var(--ltb);
+    width: 100%;
+}
+
+.home-form div {
+    width: 100%;
+}
+
+.signup-form-wrapper {
+    width: 100%;
+    padding: 1rem;
+}
+
+.signup-form-wrapper .form-body div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.signup-form-wrapper .form-body div .form-label {
+    color: var(--ltb);
+}
+
+.signup-form-wrapper .form-body div .form-input {
+    padding: 0.5rem;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    resize: none;
+    outline: none;
+    background-color: var(--main);
+    color: var(--blue);
+}
+
+.signup-form-wrapper .form-body div .form-label,
+.signup-form-wrapper .form-body div .form-input {
+    width: 100%;
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.main-button {
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    border: none;
+    background-color: var(--focus);
+    color: var(--main);
+    cursor: pointer;
+}
+
+.login-link {
+    color: var(--focus);
+}
