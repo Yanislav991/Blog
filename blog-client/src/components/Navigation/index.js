@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import authService from "../../services/authService";
 
 const Navigation = () => {
   const isUserLogged = localStorage.getItem("token") !== null;
@@ -16,6 +17,9 @@ const Navigation = () => {
         if (isUserLogged) {
           return (
             <section className="links-section">
+              <NavLink to="/create-blog">
+                <span>Create Blog</span>
+              </NavLink>
               <NavLink to="/blogs">
                 <span>Blogs</span>
               </NavLink>

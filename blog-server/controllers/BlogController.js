@@ -14,6 +14,7 @@ exports.createBlog = async (req, res) => {
   fetchUserByToken(req)
     .then(async (user) => {
       try {
+        Object.assign(req.body, user);
         const blog = await blogService.createBlog(req.body);
         res.json({ data: blog, status: "success" });
       } catch (err) {
@@ -23,7 +24,7 @@ exports.createBlog = async (req, res) => {
     .catch((err) => {
       res
         .status(401)
-        .json({ error: "You have to be logged in to access this resource!" });
+        .json({ error: "You have to be logged in to create new record!" });
     });
 };
 
