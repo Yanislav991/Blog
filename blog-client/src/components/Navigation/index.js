@@ -1,9 +1,16 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useGlobalState } from "../GlobalStateProvider";
 import authService from "../../services/authService";
 
 const Navigation = () => {
-  const isUserLogged = localStorage.getItem("token") !== null;
+  const [state, dispatch] = useGlobalState();
+  const navigate = useNavigate();
+  const logout = () => {
+    dispatch({isUserLoggedIn: false})
+    localStorage.clear();
+    navigate('/')
+  }
   return (
     <nav className="navigation">
       <section className="logo-section">
@@ -14,7 +21,7 @@ const Navigation = () => {
         </NavLink>
       </section>
       {(() => {
-        if (isUserLogged) {
+        if (state.isUserLoggedIn) {
           return (
             <section className="links-section">
               <NavLink to="/create-blog">
@@ -26,9 +33,9 @@ const Navigation = () => {
               <NavLink to="/recent-posts">
                 <span>Recent Posts</span>
               </NavLink>
-              <NavLink to="/logout">
+              <div className="logout" onClick={() => logout()}>
                 <span>Logout</span>
-              </NavLink>
+              </div>
             </section>
           );
         } else {

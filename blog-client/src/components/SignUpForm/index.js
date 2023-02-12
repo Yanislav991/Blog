@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import authService from "../../services/authService";
 import { useNavigate } from "react-router-dom";
+import { useGlobalState } from "../GlobalStateProvider";
 
 function SignUpForm() {
+  const [state, dispatch] = useGlobalState();
   const {
     register,
     handleSubmit,
@@ -13,11 +15,11 @@ function SignUpForm() {
   const onSubmit = (data, e) => {
     try {
       authService.register(data.email, data.password).then((res) => {
-        console.log(res);
         if (res.data.error) {
           alert(res.data.error);
         } else {
-          localStorage.setItem("token", JSON.stringify(res.data.token));
+          localStorage.setItem("token", res.data.token);
+          dispatch({ isUserLoggedIn: true })
           navigate("/blogs");
         }
       });

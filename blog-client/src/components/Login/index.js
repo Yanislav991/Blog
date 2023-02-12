@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import authService from "../../services/authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import { useGlobalState } from "../GlobalStateProvider";
 
 function Login() {
+  const [state, dispatch] = useGlobalState();
   const {
     register,
     handleSubmit,
@@ -15,8 +17,9 @@ function Login() {
         if (res.data?.error) {
           alert(res.data.error);
         } else {
-          localStorage.setItem("token", JSON.stringify(res.token));
-          navigate("/blogs");
+          localStorage.setItem("token", res.token);
+          dispatch({isUserLoggedIn: true})  
+          navigate("/blogs")
         }
       });
     } catch {

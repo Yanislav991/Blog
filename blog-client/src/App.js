@@ -1,4 +1,5 @@
 import "./App.css";
+import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -6,37 +7,35 @@ import Login from "./components/Login";
 import Blogs from "./components/Blogs";
 import authService from "./services/authService";
 import CreateBlog from "./components/CreateBlog";
+import GlobalStateProvider from "./components/GlobalStateProvider";
 
 function App() {
   return (
-    <div id="content">
-      <Navigation />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            !authService.getCurrentUser() ? <Home /> : <Navigate to="blogs" />
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/blogs"
-          element={
-            authService.getCurrentUser() ? <Blogs /> : <Navigate to="/login" />
-          }
-        />
-        <Route
-          path="/create-blog"
-          element={
-            authService.getCurrentUser() ? (
+    <GlobalStateProvider>
+      <div id="content">
+        <Navigation />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            path="/blogs"
+            element={<Blogs />}
+          />
+          <Route
+            path="/create-blog"
+            element={
               <CreateBlog />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-      </Routes>
-    </div>
+            }
+          />
+        </Routes>
+      </div>
+    </GlobalStateProvider>
   );
 }
 

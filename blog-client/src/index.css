@@ -65,6 +65,7 @@ body {
     gap: 2rem;
 }
 
+.links-section div>span,
 .links-section a>span {
     color: var(--ltb);
     text-decoration: underline;
@@ -72,6 +73,7 @@ body {
     font-size: 16px;
 }
 
+.links-section div>span:hover,
 .links-section a>span:hover {
     display: inline-block;
     color: var(--focus);

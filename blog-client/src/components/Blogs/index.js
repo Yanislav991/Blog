@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import blogService from "../../services/blogService";
+import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService"
 
 const Blogs = () => {
   const [blogs, setblogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     setLoading(true);
@@ -11,7 +15,9 @@ const Blogs = () => {
       const blogs = await blogService.get();
       return blogs;
     };
-
+    if(!authService.getCurrentUser()){
+      navigate("/login")
+    }
     fetchData()
       .then((res) => {
         setblogs(res.data.data);
