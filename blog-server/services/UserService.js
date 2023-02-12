@@ -20,16 +20,13 @@ exports.fetchUserByToken = (req) => {
   return new Promise((resolve, reject) => {
     if (req.headers && req.headers.authorization) {
       let authorization = req.headers.authorization;
-      console.log(authorization);
       let decoded;
       try {
         decoded = JsonWebToken.verify(authorization, SECRET_JWT_CODE);
       } catch (e) {
-        console.log(e);
         reject("Token not valid");
         return;
       }
-      console.log(decoded);
       let userId = decoded.id;
       UserModel.findOne({
         _id: userId,

@@ -4,7 +4,6 @@ const SECRET_JWT_CODE = "psmR3Hu0ihHKfqZymo1m";
 const Bcrypt = require("bcryptjs");
 
 exports.signUp = async (req, res) => {
-  console.log(req.body);
   if (!req.body.email || !req.body.password) {
     res.json({ success: false, error: "Send needed params" });
     return;

@@ -14,7 +14,8 @@ exports.createBlog = async (req, res) => {
   fetchUserByToken(req)
     .then(async (user) => {
       try {
-        Object.assign(req.body, user);
+        console.log(user)
+        req.body.userEmail = user.email
         const blog = await blogService.createBlog(req.body);
         res.json({ data: blog, status: "success" });
       } catch (err) {

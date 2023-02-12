@@ -10,7 +10,7 @@ const blogSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  user: User.schema,
+  userEmail: String,
 });
 
 module.exports = mongoose.model("Blog", blogSchema);

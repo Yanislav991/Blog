@@ -56,12 +56,12 @@ const CreateBlogForm = () => {
           />
           {errors.body && <p>Body is required.</p>}
         </div>
-        <div className="imageUrl">
-          <label className="form-label" htmlFor="imageUrl">
+        <div className="image">
+          <label className="form-label" htmlFor="image">
             Image Url
           </label>
           <input
-            {...register("imageUrl", { required: false })}
+            {...register("image", { required: false })}
             className="form-input"
             placeholder="The image will be displayed above the content of the blogpost."
           />
