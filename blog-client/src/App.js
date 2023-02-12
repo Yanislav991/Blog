@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Blogs from "./components/Blogs";
-import authService from "./services/authService";
+import Guard from './components/Guard'
 import CreateBlog from "./components/CreateBlog";
 import GlobalStateProvider from "./components/GlobalStateProvider";
 
@@ -17,20 +17,34 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home />}
+            element={
+              <Guard name={"Home"}>
+                <Home />
+              </Guard>
+            }
           />
           <Route
             path="/login"
-            element={<Login />}
+            element={
+              <Guard name={"Login"}>
+                <Login />
+              </Guard>
+            }
           />
           <Route
             path="/blogs"
-            element={<Blogs />}
+            element={
+              <Guard name={"Blogs"}>
+                <Blogs />
+              </Guard>
+            }
           />
           <Route
             path="/create-blog"
             element={
-              <CreateBlog />
+              <Guard name={"CreateBlog"}>
+                <CreateBlog />
+              </Guard>
             }
           />
         </Routes>

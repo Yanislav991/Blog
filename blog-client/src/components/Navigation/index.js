@@ -30,9 +30,6 @@ const Navigation = () => {
               <NavLink to="/blogs">
                 <span>Blogs</span>
               </NavLink>
-              <NavLink to="/recent-posts">
-                <span>Recent Posts</span>
-              </NavLink>
               <div className="logout" onClick={() => logout()}>
                 <span>Logout</span>
               </div>

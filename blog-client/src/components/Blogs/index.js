@@ -15,12 +15,9 @@ const Blogs = () => {
       const blogs = await blogService.get();
       return blogs;
     };
-    if(!authService.getCurrentUser()){
-      navigate("/login")
-    }
     fetchData()
       .then((res) => {
-        setblogs(res.data.data);
+        //setblogs(res.data.data);
         setLoading(false);
       })
       .catch(console.error);
