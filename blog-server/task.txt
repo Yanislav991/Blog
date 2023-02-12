@@ -1,31 +1,9 @@
 Create a blog application where users can
 
-1. Login/Signup to the application
-2. Create articles
+1. Login/Signup to the application V
+2. Create articles V
 3. View list of all the articles
 4. Edit/Delete his/her own articles
-5. Add categories, tags and filters to list blog page
-6. Follow other article authors
-7. Favorite/like articles
-8. Add comment to the articles
+5. Add searching, paging
+6. Add comment to the articles
 
-
-TODO:
-Login/Signup
---make the forms to submit
---make login form
-
-Create articles page(only when logged in)
-
-View All articles 
-View all blogs
-
-Edit/Delete own articles
-
-Search/Filtering/Sort functionalities
-
-Feed page(maybe)
-
-Like articles
-
-Comment Artciles
