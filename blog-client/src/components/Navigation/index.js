@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useGlobalState } from "../GlobalStateProvider";
-import authService from "../../services/authService";
 
 const Navigation = () => {
   const [state, dispatch] = useGlobalState();

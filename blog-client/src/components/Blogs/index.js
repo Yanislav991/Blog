@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import blogService from "../../services/blogService";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/authService"
+import BlogListItem from "../BlogListItem";
 
 const Blogs = () => {
-  const [blogs, setblogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -17,7 +18,8 @@ const Blogs = () => {
     };
     fetchData()
       .then((res) => {
-        //setblogs(res.data.data);
+        console.log(res)
+        setBlogs(res.data.data);
         setLoading(false);
       })
       .catch(console.error);
@@ -30,7 +32,7 @@ const Blogs = () => {
   return (
     <ul>
       {blogs.map((item) => (
-        <li key={item}></li>
+        <BlogListItem item={item} />
       ))}
     </ul>
   );
