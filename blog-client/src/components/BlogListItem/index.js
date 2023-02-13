@@ -6,7 +6,7 @@ const BlogListItem = (props) => {
         <li key={props.item} className="blog-list-item">
             <section className="blog-list-item-header">
                 <h4>{props.item.title}</h4>
-                <span className="createdAt">{props.item.createdAt}</span>
+                <span className="createdAt">{new Date(props.item.createdAt).toLocaleDateString("en-US")}</span>
             </section>
             <section className="blog-list-item-body">
                 <div className="blog-list-item-image-wrapper">
@@ -15,8 +15,8 @@ const BlogListItem = (props) => {
                 <p>{props.item.body.substring(0, 30)} ...</p>
             </section>
             <section className="blog-list-item-footer">
-                <span>Date Created: {props.item.createdAt}</span>
-                <span>Read Whole Article</span>
+                <span>Author: {props.item.userEmail}</span>
+                <span className="readMore">Read Whole Article</span>
             </section>
         </li>
     )
