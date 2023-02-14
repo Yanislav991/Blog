@@ -12,7 +12,7 @@ const BlogListItem = (props) => {
                 <div className="blog-list-item-image-wrapper">
                     <img src={props.item.image} />
                 </div>
-                <p>{props.item.body.substring(0, 30)} ...</p>
+                <p className="blog-list-item-shorten-description">{props.item.body.substring(0, 300)} ...</p>
             </section>
             <section className="blog-list-item-footer">
                 <span>Author: {props.item.userEmail}</span>
