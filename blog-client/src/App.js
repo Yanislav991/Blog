@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Blogs from "./components/Blogs";
+import BlogDetails from "./components/BlogDetails";
 import Guard from './components/Guard'
 import CreateBlog from "./components/CreateBlog";
 import GlobalStateProvider from "./components/GlobalStateProvider";
@@ -44,6 +45,14 @@ function App() {
             element={
               <Guard name={"CreateBlog"}>
                 <CreateBlog />
+              </Guard>
+            }
+          />
+          <Route
+            path="/blog-details/:id"
+            element={
+              <Guard name={"BlogDetails"}>
+                <BlogDetails />
               </Guard>
             }
           />

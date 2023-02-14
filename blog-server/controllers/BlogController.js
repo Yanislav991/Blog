@@ -30,12 +30,20 @@ exports.createBlog = async (req, res) => {
 };
 
 exports.getBlogById = async (req, res) => {
-  try {
-    const blog = await blogService.getBlogById(req.params.id);
-    res.json({ data: blog, status: "success" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  fetchUserByToken(req)
+    .then(async (user) => {
+      try {
+        const blog = await blogService.getBlogById(req.params.id);
+        res.json({ data: blog, status: "success" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+    }).catch((err) => {
+      res
+        .status(401)
+        .json({ error: "You have to be logged in to create new record!" });
+    });
+
 };
 
 exports.updateBlog = async (req, res) => {

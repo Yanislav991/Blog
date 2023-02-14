@@ -16,6 +16,9 @@ class BlogService {
   async get() {
     return await axios.get(API_URL);
   }
+  async getById(id){
+    return await axios.get(API_URL + id)
+  }
 }
 
 export default new BlogService();

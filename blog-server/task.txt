@@ -7,4 +7,4 @@ Create a blog application where users can
 5. Edit/Delete his/her own articles
 6. Add searching, paging
 7. Add comment to the articles
-
+8. Add My Blogs page

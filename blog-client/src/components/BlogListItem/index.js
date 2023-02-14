@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const BlogListItem = (props) => {
     return (
-        <li key={props.item} className="blog-list-item">
+        <li className="blog-list-item">
             <section className="blog-list-item-header">
                 <h4>{props.item.title}</h4>
                 <span className="createdAt">{new Date(props.item.createdAt).toLocaleDateString("en-US")}</span>
@@ -16,7 +16,9 @@ const BlogListItem = (props) => {
             </section>
             <section className="blog-list-item-footer">
                 <span>Author: {props.item.userEmail}</span>
+                <NavLink to={"/blog-details/" + props.item._id}>
                 <span className="readMore">Read Whole Article</span>
+                </NavLink>
             </section>
         </li>
     )

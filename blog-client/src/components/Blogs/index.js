@@ -7,8 +7,6 @@ import BlogListItem from "../BlogListItem";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     setLoading(true);
