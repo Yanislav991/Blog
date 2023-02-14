@@ -58,7 +58,7 @@ const BlogDetails = () => {
             {blog.userEmail === state.userEmail ?
                 <section className="edit-delete-buttons">
                     <button className="main-button" onClick={() => deleteBlog()}>Delete</button>
-                    <NavLink to={"/blog-edit/" + blog._id}>
+                    <NavLink to={"/edit-blog/" + blog._id}>
                         <button className="main-button">Edit</button>
                     </NavLink>
                 </section>

@@ -48,12 +48,26 @@ exports.getBlogById = async (req, res) => {
 };
 
 exports.updateBlog = async (req, res) => {
-  try {
-    const blog = await blogService.updateBlog(req.params.id, req.body);
-    res.json({ data: blog, status: "success" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  fetchUserByToken(req)
+    .then(async (user) => {
+      try {
+        const creatorEmail = await blogService.getBlogById(req.params.id).userEmail;
+        if (creatorEmail !== user.email) {
+          res.status(401).json("You have to own this post to edit it!");
+          return;
+        }
+        const blog = await blogService.updateBlog(req.params.id, req.body);
+        res.json({ data: blog, status: "success" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+    }).catch((err) => {
+      console.log(err)
+      res
+        .status(401)
+        .json({ error: "You have to be logged to delete this resource!" });
+    });
+
 };
 
 exports.deleteBlog = async (req, res) => {

@@ -6,6 +6,13 @@ axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 class BlogService {
+  update(blog) {
+    return axios.put(API_URL + blog._id, blog, {
+      headers: {
+        'Authorization': authService.getCurrentUser()
+      }
+    });
+  }
   create(blog) {
     return axios.post(API_URL, blog, {
       headers: {
