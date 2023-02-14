@@ -30,7 +30,7 @@ function Login() {
     <div className="login-form-wrapper">
       <h3 className="login-form-header">Login</h3>
       <div className="form-image-wrapper">
-        <img src="/images/login.png" />
+        <img src="/images/login.jpg" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="form-body">
         <div className="email">
