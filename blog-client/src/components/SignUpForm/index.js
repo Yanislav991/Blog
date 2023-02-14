@@ -19,7 +19,7 @@ function SignUpForm() {
           alert(res.data.error);
         } else {
           localStorage.setItem("token", res.data.token);
-          dispatch({ isUserLoggedIn: true })
+          dispatch({ isUserLoggedIn: true, userEmail: data.email })
           navigate("/blogs");
         }
       });

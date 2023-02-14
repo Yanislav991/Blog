@@ -341,4 +341,14 @@ body {
     opacity: .8;
 }
 
+.edit-delete-buttons{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem
+}
+
+.edit-delete-buttons button{
+    font-size: 20px;
+}
+
 

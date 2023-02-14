@@ -18,7 +18,7 @@ function Login() {
           alert(res.data.error);
         } else {
           localStorage.setItem("token", res.token);
-          dispatch({isUserLoggedIn: true})  
+          dispatch({isUserLoggedIn: true, userEmail: data.email})  
           navigate("/blogs")
         }
       });

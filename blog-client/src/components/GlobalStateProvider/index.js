@@ -1,7 +1,8 @@
 import React from 'react'
 
 const defaultGlobalState = {
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    userEmail:""
 };
 const GlobalStateContext = React.createContext(defaultGlobalState);
 const DispatchStateContext = React.createContext(undefined);
