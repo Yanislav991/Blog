@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import blogService from "../../services/blogService";
 import { useGlobalState } from "../GlobalStateProvider";
+import { NavLink } from "react-router-dom";
 
 const BlogDetails = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [state, dispatch] = useGlobalState();
     const [blog, setBlog] = useState({
@@ -15,6 +17,10 @@ const BlogDetails = () => {
         id: ""
     });
     const [loading, setLoading] = useState(false);
+    const deleteBlog = () => {
+        blogService.delete(blog._id);
+        navigate("/blogs")
+    }
     useEffect(() => {
         console.log(state)
         setLoading(true);
@@ -30,6 +36,7 @@ const BlogDetails = () => {
             })
             .catch(console.error);
     }, [blog.title]);
+
     if (loading) {
         return <p>Data is loading...</p>;
     }
@@ -50,8 +57,10 @@ const BlogDetails = () => {
             </section>
             {blog.userEmail === state.userEmail ?
                 <section className="edit-delete-buttons">
-                    <button className="main-button">Delete</button>
-                    <button className="main-button">Edit</button>
+                    <button className="main-button" onClick={() => deleteBlog()}>Delete</button>
+                    <NavLink to={"/blog-edit/" + blog._id}>
+                        <button className="main-button">Edit</button>
+                    </NavLink>
                 </section>
                 : ""
             }

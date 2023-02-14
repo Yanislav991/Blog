@@ -39,9 +39,10 @@ exports.getBlogById = async (req, res) => {
         res.status(500).json({ error: err.message });
       }
     }).catch((err) => {
+      console.log(err)
       res
         .status(401)
-        .json({ error: "You have to be logged in to create new record!" });
+        .json({ error: "You have to be logged to get this resource!" });
     });
 
 };
@@ -56,10 +57,23 @@ exports.updateBlog = async (req, res) => {
 };
 
 exports.deleteBlog = async (req, res) => {
-  try {
-    const blog = await blogService.deleteBlog(req.params.id);
-    res.json({ data: blog, status: "success" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  fetchUserByToken(req)
+    .then(async (user) => {
+      try {
+        const creatorEmail = await blogService.getBlogById(req.params.id).userEmail;
+        if (creatorEmail !== user.email) {
+          res.status(401).json("You have to own this post to delete it!");
+          return;
+        }
+        const blog = await blogService.deleteBlog(req.params.id);
+        res.json({ data: blog, status: "success" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+    }).catch((err) => {
+      console.log(err)
+      res
+        .status(401)
+        .json({ error: "You have to be logged to delete this resource!" });
+    });
 };
